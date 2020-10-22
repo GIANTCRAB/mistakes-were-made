@@ -30,7 +30,7 @@ public class AtmCard implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long atmCardId;
+    private Long atmCardId;
 
     @NotNull
     @Size(min = 8, max = 19)

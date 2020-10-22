@@ -35,7 +35,7 @@ public class DepositAccount implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long depositAccountId;
+    private Long depositAccountId;
 
     // Format: xxx-xxxx-xxxx-xxxx-xxxx
     @NotNull

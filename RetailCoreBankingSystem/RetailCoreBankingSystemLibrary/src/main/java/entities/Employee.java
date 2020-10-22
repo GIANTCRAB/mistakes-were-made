@@ -17,7 +17,7 @@ public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long employeeId;
+    private Long employeeId;
 
     @NotNull
     @Size(min = 1, max = 127)

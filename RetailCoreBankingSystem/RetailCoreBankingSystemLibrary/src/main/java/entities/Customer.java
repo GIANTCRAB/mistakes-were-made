@@ -28,7 +28,7 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long customerId;
+    private Long customerId;
 
     @NotNull
     @Size(min = 1, max = 127)

@@ -26,7 +26,7 @@ public class DepositAccountTransaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long depositAccountTransactionId;
+    private Long depositAccountTransactionId;
 
     @NotNull
     @Column(nullable = false)
