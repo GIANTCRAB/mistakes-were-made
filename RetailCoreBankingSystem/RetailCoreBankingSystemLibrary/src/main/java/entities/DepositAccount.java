@@ -36,6 +36,10 @@ public class DepositAccount implements Serializable {
     private String accountNumber;
 
     @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    private DepositAccountTypeEnum depositAccountTypeEnum;
+
+    @NotNull
     @Column
     private BigDecimal availableBalance = BigDecimal.valueOf(0);
 
