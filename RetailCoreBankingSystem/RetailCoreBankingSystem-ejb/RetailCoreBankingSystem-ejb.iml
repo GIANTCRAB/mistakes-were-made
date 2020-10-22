@@ -20,6 +20,7 @@
           <factory-entry name="calc-bean" />
         </datasource-mapping>
         <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>

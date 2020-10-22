@@ -58,6 +58,9 @@ public class TerminalClient {
                 loop = false;
             }
         }
+
+        this.inputStream.close();
+        this.outputStream.close();
     }
 
     private void doEmployeeLogin() throws IOException {

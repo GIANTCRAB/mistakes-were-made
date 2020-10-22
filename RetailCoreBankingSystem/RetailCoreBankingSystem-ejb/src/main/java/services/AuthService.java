@@ -7,7 +7,9 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 @LocalBean
@@ -19,19 +21,22 @@ public class AuthService {
     private Pbkdf2PasswordHash passwordHash;
 
     public boolean checkEmployeeExists(Employee employee) {
-        return this.em.find(Employee.class, employee) != null;
+        return this.em.find(Employee.class, employee.getEmployeeId()) != null;
     }
 
     public Employee login(String username, String password) throws IncorrectCredentialsException {
-        final Employee usernameFind = new Employee();
-        usernameFind.setUsername(username);
+        final TypedQuery<Employee> searchQuery = this.em.createQuery("select e from Employee e where e.username = ?1", Employee.class)
+                .setParameter(1, username);
 
-        final Employee searchResult = this.em.find(Employee.class, usernameFind);
+        try {
+            final Employee searchResult = searchQuery.getSingleResult();
 
-        if (searchResult != null) {
-            if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
-                return searchResult;
+            if (searchResult != null) {
+                if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
+                    return searchResult;
+                }
             }
+        } catch (NoResultException ignored) {
         }
 
         throw new IncorrectCredentialsException();
