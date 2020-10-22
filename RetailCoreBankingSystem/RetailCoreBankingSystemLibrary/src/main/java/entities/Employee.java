@@ -46,5 +46,5 @@ public class Employee implements Serializable {
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
-    private EmployeeAccessRightEnum employeeAccessRightEnum;
+    private EmployeeAccessRight employeeAccessRight = EmployeeAccessRight.TELLER;
 }

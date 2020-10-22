@@ -42,7 +42,7 @@ public class DepositAccount implements Serializable {
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
-    private DepositAccountTypeEnum depositAccountTypeEnum;
+    private DepositAccountType depositAccountType;
 
     @NotNull
     @Column()

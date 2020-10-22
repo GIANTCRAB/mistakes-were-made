@@ -1,5 +1,5 @@
 package entities;
 
-public enum EmployeeAccessRightEnum {
+public enum EmployeeAccessRight {
     TELLER, EXECUTIVE, MANAGER
 }

@@ -1,5 +1,5 @@
 package entities;
 
-public enum DepositAccountTypeEnum {
+public enum DepositAccountType {
     SAVINGS, CURRENT
 }
