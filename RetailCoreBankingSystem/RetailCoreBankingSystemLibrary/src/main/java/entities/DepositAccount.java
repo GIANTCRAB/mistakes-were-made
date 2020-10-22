@@ -11,6 +11,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +26,9 @@ public class DepositAccount implements Serializable {
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
+
+    @OneToMany(mappedBy = "depositAccount")
+    private List<DepositAccountTransaction> depositAccountTransactionList = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,18 +45,18 @@ public class DepositAccount implements Serializable {
     private DepositAccountTypeEnum depositAccountTypeEnum;
 
     @NotNull
-    @Column
+    @Column()
     private BigDecimal availableBalance = BigDecimal.valueOf(0);
 
     @NotNull
-    @Column
+    @Column()
     private BigDecimal holdBalance = BigDecimal.valueOf(0);
 
     @NotNull
-    @Column
+    @Column()
     private BigDecimal ledgerBalance = BigDecimal.valueOf(0);
 
     @NotNull
-    @Column
+    @Column()
     private boolean enabled = true;
 }
