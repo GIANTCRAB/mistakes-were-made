@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/calc/calc.iml" filepath="$PROJECT_DIR$/calc/calc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/calc/calc-bean/calc-bean.iml" filepath="$PROJECT_DIR$/calc/calc-bean/calc-bean.iml" />
-      <module fileurl="file://$PROJECT_DIR$/calc/calc-client/calc-client.iml" filepath="$PROJECT_DIR$/calc/calc-client/calc-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/calc/calc-library/calc-library.iml" filepath="$PROJECT_DIR$/calc/calc-library/calc-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/calc-bean/calc-bean.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/calc-bean/calc-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/calc-client/calc-client.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/calc-client/calc-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/calc-library/calc-library.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/calc-library/calc-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mistakes-were-made.iml" filepath="$PROJECT_DIR$/.idea/mistakes-were-made.iml" />
     </modules>
   </component>
