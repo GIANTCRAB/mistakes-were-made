@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/AutomatedTellerMachineClient/AutomatedTellerMachineClient.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/AutomatedTellerMachineClient/AutomatedTellerMachineClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/RetailCoreBankingSystem-ejb.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/RetailCoreBankingSystem-ejb.iml" />
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/RetailCoreBankingSystemLibrary.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/RetailCoreBankingSystemLibrary.iml" />

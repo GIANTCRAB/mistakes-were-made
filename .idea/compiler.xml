@@ -7,13 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="RetailCoreBankingSystem-ejb" />
         <module name="TellerTerminalClient" />
+        <module name="AutomatedTellerMachineClient" />
         <module name="RetailCoreBankingSystemLibrary" />
+        <module name="RetailCoreBankingSystem-ejb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="RetailCoreBankingSystem" target="1.5" />
+      <module name="AutomatedTellerMachineClient" target="1.8" />
+      <module name="RetailCoreBankingSystem" target="1.8" />
       <module name="RetailCoreBankingSystem-ejb" target="1.8" />
       <module name="RetailCoreBankingSystemLibrary" target="1.8" />
       <module name="TellerTerminalClient" target="1.8" />

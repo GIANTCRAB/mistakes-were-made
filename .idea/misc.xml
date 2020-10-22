@@ -6,7 +6,11 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/calc/pom.xml" />
+        <option value="$PROJECT_DIR$/RetailCoreBankingSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/pom.xml" />
+        <option value="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/pom.xml" />
+        <option value="$PROJECT_DIR$/RetailCoreBankingSystem/TellerTerminalClient/pom.xml" />
+        <option value="$PROJECT_DIR$/RetailCoreBankingSystem/AutomatedTellerMachineClient/pom.xml" />
       </list>
     </option>
   </component>
