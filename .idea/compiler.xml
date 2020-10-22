@@ -8,14 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="calc-client" />
-        <module name="calc-bean" />
+        <module name="RetailCoreBankingSystem-ejb" />
         <module name="RetailCoreBankingSystemLibrary" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="calc-bean" target="1.8" />
       <module name="calc-client" target="1.8" />
       <module name="RetailCoreBankingSystem" target="1.5" />
+      <module name="RetailCoreBankingSystem-ejb" target="1.8" />
       <module name="RetailCoreBankingSystemLibrary" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -5,8 +5,8 @@ GLASSFISH_HOME="/home/woohuiren/Programming/glassfish5/"
 
 ROOT_DIR=$(cd `dirname  $0 `  && pwd )
 ADMIN=$GLASSFISH_HOME/bin/asadmin
-EJB_ARTIFACT=$ROOT_DIR/calc-bean/target/calc-bean.war
-APP_NAME=calc-bean
+EJB_ARTIFACT=$ROOT_DIR/RetailCoreBankingSystem-ejb/target/RetailCoreBankingSystem-ejb.war
+APP_NAME=RetailCoreBankingSystem-ejb
 
 echo $ROOT_DIR
 

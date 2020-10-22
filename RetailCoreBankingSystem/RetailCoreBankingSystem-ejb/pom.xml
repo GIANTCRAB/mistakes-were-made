@@ -8,7 +8,7 @@
         <artifactId>RetailCoreBankingSystem</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>calc-bean</artifactId>
+    <artifactId>RetailCoreBankingSystem-ejb</artifactId>
     <packaging>war</packaging>
     <dependencies>
         <dependency>
@@ -24,7 +24,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>calc-bean</finalName>
+        <finalName>RetailCoreBankingSystem-ejb</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>

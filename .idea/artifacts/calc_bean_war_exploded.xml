@@ -11,7 +11,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="calc-bean" />
+          <element id="module-output" name="RetailCoreBankingSystem-ejb" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jakarta.platform:jakarta.jakartaee-api:8.0.0" />
@@ -22,9 +22,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/RetailCoreBankingSystem/calc-bean/target/calc-bean/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/target/calc-bean/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="calc-bean/web/Web" />
+      <element id="javaee-facet-resources" facet="RetailCoreBankingSystem-ejb/web/Web" />
     </root>
   </artifact>
 </component>
