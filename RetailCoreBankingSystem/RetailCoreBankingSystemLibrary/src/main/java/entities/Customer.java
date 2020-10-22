@@ -10,6 +10,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +20,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @OneToMany(mappedBy = "customer")
+    private List<DepositAccount> depositAccountList = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

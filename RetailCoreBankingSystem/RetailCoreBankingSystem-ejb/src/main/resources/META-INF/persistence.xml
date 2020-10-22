@@ -7,6 +7,7 @@
         <jta-data-source>jdbc/mysql</jta-data-source>
         <class>entities.Customer</class>
         <class>entities.Employee</class>
+        <class>entities.DepositAccount</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
