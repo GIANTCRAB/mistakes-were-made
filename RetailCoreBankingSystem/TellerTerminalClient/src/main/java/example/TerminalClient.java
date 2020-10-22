@@ -2,6 +2,7 @@ package example;
 
 import controllers.TellerAuthSessionBeanRemote;
 import controllers.TellerSessionBeanRemote;
+import entities.AtmCard;
 import entities.Employee;
 import exceptions.IncorrectCredentialsException;
 import exceptions.InvalidConstraintException;
@@ -108,6 +109,9 @@ public class TerminalClient {
                 case 2:
                     displayDepositAccountCreationMenu();
                     break;
+                case 3:
+                    displayIssueAtmCardMenu();
+                    break;
                 case 5:
                 default:
                     loggedIn = false;
@@ -190,6 +194,45 @@ public class TerminalClient {
 
                 if (e instanceof InvalidEntityIdException) {
                     this.outputStreamWriter.write("Customer does not exists!\n");
+                    this.outputStreamWriter.flush();
+                }
+
+                if (e instanceof InvalidConstraintException) {
+                    this.displayConstraintErrorMessage((InvalidConstraintException) e);
+                }
+            }
+        }
+    }
+
+    private void displayIssueAtmCardMenu() throws IOException {
+        boolean loop = true;
+        while (loop) {
+            this.outputStreamWriter.write("Enter Customer ID:\n");
+            this.outputStreamWriter.flush();
+            final Long customerId = scanner.nextLong();
+            this.outputStreamWriter.write("Enter Deposit Account ID(s): (delimited by a comma ',')\n");
+            this.outputStreamWriter.flush();
+            final String accountIds = scanner.next();
+            this.outputStreamWriter.write("Enter Name On Card:\n");
+            this.outputStreamWriter.flush();
+            final String nameOnCard = scanner.next();
+            this.outputStreamWriter.write("Enter Pin: (min of 6, max of 10)\n");
+            this.outputStreamWriter.flush();
+            final String pin = scanner.next();
+
+            try {
+                AtmCard atmCard = this.tellerSessionBeanRemote.issueAtmCard(authenticatedEmployee, customerId, accountIds, nameOnCard, pin);
+                this.outputStreamWriter.write("Atm card created successfully: " + atmCard.getCardNumber() + "\n");
+                this.outputStreamWriter.flush();
+                loop = false;
+            } catch (NotAuthenticatedException | InvalidConstraintException | InvalidEntityIdException e) {
+                if (e instanceof NotAuthenticatedException) {
+                    this.displayNotAuthenticatedMessage();
+                    loop = false;
+                }
+
+                if (e instanceof InvalidEntityIdException) {
+                    this.outputStreamWriter.write("Customer or deposit account(s) does not exists!\n");
                     this.outputStreamWriter.flush();
                 }
 
