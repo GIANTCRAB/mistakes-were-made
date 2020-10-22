@@ -11,7 +11,7 @@
         <glassfish.version>5.0</glassfish.version>
     </properties>
     <modules>
-        <module>calc-library</module>
+        <module>RetailCoreBankingSystemLibrary</module>
         <module>calc-bean</module>
         <module>calc-client</module>
     </modules>

@@ -16,7 +16,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jakarta.platform:jakarta.jakartaee-api:8.0.0" />
           <element id="archive" name="calc-library-1.0.0-SNAPSHOT.jar">
-            <element id="module-output" name="calc-library" />
+            <element id="module-output" name="RetailCoreBankingSystemLibrary" />
           </element>
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.16" />
         </element>

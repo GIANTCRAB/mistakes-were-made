@@ -8,7 +8,7 @@
         <artifactId>RetailCoreBankingSystem</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>calc-library</artifactId>
+    <artifactId>RetailCoreBankingSystemLibrary</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

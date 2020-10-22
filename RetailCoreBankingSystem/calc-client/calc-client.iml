@@ -200,7 +200,7 @@
     <orderEntry type="library" name="Maven: org.jboss.weld.se:weld-se-shaded:3.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.enterprise:cdi-api:2.0" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="module" module-name="calc-library" />
+    <orderEntry type="module" module-name="RetailCoreBankingSystemLibrary" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
   </component>
 </module>

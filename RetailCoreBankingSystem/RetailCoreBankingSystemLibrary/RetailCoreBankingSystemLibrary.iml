@@ -15,10 +15,10 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
-    <content url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-library">
-      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-library/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-library/src/main/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-library/target" />
+    <content url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/RetailCoreBankingSystemLibrary">
+      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
