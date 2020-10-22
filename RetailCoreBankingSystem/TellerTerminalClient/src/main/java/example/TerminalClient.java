@@ -5,6 +5,7 @@ import controllers.TellerSessionBeanRemote;
 import entities.Employee;
 import exceptions.IncorrectCredentialsException;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 @RequiredArgsConstructor
@@ -102,6 +104,10 @@ public class TerminalClient {
             switch (option) {
                 case 1:
                     displayCustomerCreationMenu();
+                    break;
+                case 2:
+                    displayDepositAccountCreationMenu();
+                    break;
                 case 5:
                 default:
                     loggedIn = false;
@@ -147,18 +153,60 @@ public class TerminalClient {
                 loop = false;
             } catch (NotAuthenticatedException | InvalidConstraintException e) {
                 if (e instanceof NotAuthenticatedException) {
-                    this.outputStreamWriter.write("You are not logged in! Restart and try again.\n");
-                    this.outputStreamWriter.flush();
+                    this.displayNotAuthenticatedMessage();
                     loop = false;
                 }
 
                 if (e instanceof InvalidConstraintException) {
-                    final InvalidConstraintException invalidConstraintException = (InvalidConstraintException) e;
-                    this.outputStreamWriter.write("There were some validation errors!\n");
-                    this.outputStreamWriter.write(invalidConstraintException.toString() + "\n");
-                    this.outputStreamWriter.flush();
+                    this.displayConstraintErrorMessage((InvalidConstraintException) e);
                 }
             }
         }
+    }
+
+    private void displayDepositAccountCreationMenu() throws IOException {
+        boolean loop = true;
+        while (loop) {
+            this.outputStreamWriter.write("Enter Customer ID:\n");
+            this.outputStreamWriter.flush();
+            final Long customerId = scanner.nextLong();
+            this.outputStreamWriter.write("Enter account type: (savings or current)\n");
+            this.outputStreamWriter.flush();
+            final String accountType = scanner.next();
+            this.outputStreamWriter.write("Initial deposit amount: $\n");
+            this.outputStreamWriter.flush();
+            final BigDecimal initialDeposit = BigDecimal.valueOf(scanner.nextInt());
+
+            try {
+                this.tellerSessionBeanRemote.openDepositAccount(this.authenticatedEmployee, customerId, accountType, initialDeposit);
+                this.outputStreamWriter.write("Deposit account created successfully\n");
+                this.outputStreamWriter.flush();
+            } catch (NotAuthenticatedException | InvalidConstraintException | InvalidEntityIdException e) {
+                if (e instanceof NotAuthenticatedException) {
+                    this.displayNotAuthenticatedMessage();
+                    loop = false;
+                }
+
+                if (e instanceof InvalidEntityIdException) {
+                    this.outputStreamWriter.write("Customer does not exists!\n");
+                    this.outputStreamWriter.flush();
+                }
+
+                if (e instanceof InvalidConstraintException) {
+                    this.displayConstraintErrorMessage((InvalidConstraintException) e);
+                }
+            }
+        }
+    }
+
+    private void displayNotAuthenticatedMessage() throws IOException {
+        this.outputStreamWriter.write("You are not logged in! Restart and try again.\n");
+        this.outputStreamWriter.flush();
+    }
+
+    private void displayConstraintErrorMessage(InvalidConstraintException invalidConstraintException) throws IOException {
+        this.outputStreamWriter.write("There were some validation errors!\n");
+        this.outputStreamWriter.write(invalidConstraintException.toString() + "\n");
+        this.outputStreamWriter.flush();
     }
 }
