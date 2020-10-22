@@ -181,6 +181,7 @@ public class TerminalClient {
                 this.tellerSessionBeanRemote.openDepositAccount(this.authenticatedEmployee, customerId, accountType, initialDeposit);
                 this.outputStreamWriter.write("Deposit account created successfully\n");
                 this.outputStreamWriter.flush();
+                loop = false;
             } catch (NotAuthenticatedException | InvalidConstraintException | InvalidEntityIdException e) {
                 if (e instanceof NotAuthenticatedException) {
                     this.displayNotAuthenticatedMessage();
