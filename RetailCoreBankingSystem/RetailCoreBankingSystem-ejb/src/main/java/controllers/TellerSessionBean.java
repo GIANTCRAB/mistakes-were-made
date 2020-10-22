@@ -14,7 +14,7 @@ import javax.ejb.Stateful;
 import javax.inject.Inject;
 import java.math.BigDecimal;
 
-@Stateful(name = "Teller")
+@Stateful
 public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionBeanRemote {
     // This is a managed bean, prefer CDI over EJB annotation
     @Inject
