@@ -13,6 +13,12 @@
         <element id="directory" name="classes">
           <element id="module-output" name="RetailCoreBankingSystem-ejb" />
         </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="RetailCoreBankingSystemLibrary-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="RetailCoreBankingSystemLibrary" />
+          </element>
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.16" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/target/RetailCoreBankingSystem-ejb/META-INF/MANIFEST.MF" />
