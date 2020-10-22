@@ -1,11 +1,14 @@
 package controllers;
 
 import entities.Customer;
+import entities.DepositAccount;
 import entities.Employee;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
 
 import javax.ejb.Remote;
+import java.math.BigDecimal;
 
 @Remote
 public interface TellerSessionBeanRemote {
@@ -18,7 +21,10 @@ public interface TellerSessionBeanRemote {
                             String addressLine2,
                             String postalCode) throws NotAuthenticatedException, InvalidConstraintException;
 
-    void openDepositAccount();
+    DepositAccount openDepositAccount(Employee loggedInEmployee,
+                                      Long customerId,
+                                      String accountType,
+                                      BigDecimal initialDeposit) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException;
 
     void issueAtmCard();
 

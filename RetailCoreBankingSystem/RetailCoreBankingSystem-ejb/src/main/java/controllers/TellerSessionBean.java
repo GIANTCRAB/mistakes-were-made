@@ -1,14 +1,18 @@
 package controllers;
 
 import entities.Customer;
+import entities.DepositAccount;
+import entities.DepositAccountType;
 import entities.Employee;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
 import services.AuthService;
 import services.CustomerService;
 
 import javax.ejb.Stateful;
 import javax.inject.Inject;
+import java.math.BigDecimal;
 
 @Stateful(name = "Teller")
 public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionBeanRemote {
@@ -36,9 +40,29 @@ public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionB
     }
 
     @Override
-    public void openDepositAccount() {
+    public DepositAccount openDepositAccount(Employee loggedInEmployee,
+                                             Long customerId,
+                                             String accountType,
+                                             BigDecimal initialDeposit) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException {
+        if (this.authService.checkEmployeeExists(loggedInEmployee)) {
+            throw new NotAuthenticatedException();
+        }
 
+        DepositAccountType depositAccountType;
+
+        switch (accountType.toLowerCase()) {
+            case "current":
+                depositAccountType = DepositAccountType.CURRENT;
+                break;
+            default:
+            case "savings":
+                depositAccountType = DepositAccountType.SAVINGS;
+                break;
+        }
+
+        return this.customerService.openDepositAccount(customerId, depositAccountType, initialDeposit);
     }
+
 
     @Override
     public void issueAtmCard() {

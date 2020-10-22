@@ -4,6 +4,7 @@ import entities.Customer;
 import entities.DepositAccount;
 import entities.DepositAccountType;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -11,12 +12,10 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
@@ -62,7 +61,12 @@ public class CustomerService {
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public DepositAccount openDepositAccount(@NotNull Customer customer, DepositAccountType accountType, BigDecimal initialDeposit) throws InvalidConstraintException {
+    public DepositAccount openDepositAccount(Long customerId, DepositAccountType accountType, BigDecimal initialDeposit) throws InvalidEntityIdException, InvalidConstraintException {
+        final Customer customer = this.em.find(Customer.class, customerId);
+        if (customer == null) {
+            throw new InvalidEntityIdException();
+        }
+
         DepositAccount depositAccount = new DepositAccount();
         final Random random = new Random();
         final String accountNumber = padZero(random.nextInt(1000), 3) + "-"
@@ -73,8 +77,8 @@ public class CustomerService {
         depositAccount.setAccountNumber(accountNumber);
         depositAccount.setCustomer(customer);
         depositAccount.setDepositAccountType(accountType);
+        // TODO: have a initial transaction to set balance?
         depositAccount.setAvailableBalance(initialDeposit);
-        depositAccount.setLedgerBalance(initialDeposit);
         Set<ConstraintViolation<DepositAccount>> violations = validator.validate(depositAccount);
         // There are invalid data
         if (!violations.isEmpty()) {
