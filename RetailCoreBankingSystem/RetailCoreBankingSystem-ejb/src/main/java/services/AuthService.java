@@ -1,5 +1,6 @@
 package services;
 
+import entities.AtmCard;
 import entities.Employee;
 import exceptions.IncorrectCredentialsException;
 
@@ -41,6 +42,18 @@ public class AuthService {
                     return searchResult;
                 }
             }
+        } catch (NoResultException ignored) {
+        }
+
+        throw new IncorrectCredentialsException();
+    }
+
+    public AtmCard atmAuth(String cardNumber, String cardPin) throws IncorrectCredentialsException {
+        final TypedQuery<AtmCard> searchQuery = this.em.createQuery("select atmCard from AtmCard atmCard where atmCard.enabled = true and atmCard.cardNumber = ?1 and atmCard.pin = ?2", AtmCard.class)
+                .setParameter(1, cardNumber)
+                .setParameter(2, cardPin);
+        try {
+            return searchQuery.getSingleResult();
         } catch (NoResultException ignored) {
         }
 
