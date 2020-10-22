@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -29,14 +28,12 @@ public class AtmCard implements Serializable {
     private long atmCardId;
 
     @NotNull
-    @Min(8)
-    @Max(19)
+    @Size(min = 8, max = 19)
     @Column(length = 23, nullable = false, unique = true)
     private String cardNumber;
 
     @NotNull
-    @Min(1)
-    @Max(255)
+    @Size(min = 1, max = 255)
     @Column(nullable = false)
     private String nameOnCard;
 
@@ -45,8 +42,7 @@ public class AtmCard implements Serializable {
     private boolean enabled = true;
 
     @NotNull
-    @Min(6)
-    @Max(10)
+    @Size(min = 6, max = 10)
     @Column(length = 10, nullable = false)
     private String pin;
 }

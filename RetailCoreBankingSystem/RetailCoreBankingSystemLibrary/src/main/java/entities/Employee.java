@@ -3,9 +3,8 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -21,26 +20,22 @@ public class Employee implements Serializable {
     private long employeeId;
 
     @NotNull
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127, nullable = false)
     private String firstName;
 
     @NotNull
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127, nullable = false)
     private String lastName;
 
     @NotNull
-    @Min(3)
-    @Max(127)
+    @Size(min = 3, max = 127)
     @Column(length = 127, nullable = false, unique = true)
     private String username;
 
     @NotNull
-    @Min(3)
-    @Max(255)
+    @Size(min = 3, max = 255)
     @Column(nullable = false)
     private String password;
 

@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -36,8 +35,7 @@ public class DepositAccount implements Serializable {
 
     // Format: xxx-xxxx-xxxx-xxxx-xxxx
     @NotNull
-    @Min(24)
-    @Max(24)
+    @Size(min = 24, max = 24)
     @Column(length = 32, nullable = false, unique = true)
     private String accountNumber;
 

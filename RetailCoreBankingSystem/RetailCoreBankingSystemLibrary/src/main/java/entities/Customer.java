@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,43 +31,36 @@ public class Customer implements Serializable {
     private long customerId;
 
     @NotNull
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127, nullable = false)
     private String firstName;
 
     @NotNull
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127, nullable = false)
     private String lastName;
 
     @NotNull
-    @Min(1)
-    @Max(63)
+    @Size(min = 1, max = 63)
     @Column(length = 63, nullable = false)
     private String identificationNumber;
 
     @NotNull
-    @Min(1)
-    @Max(64)
+    @Size(min = 1, max = 64)
     @Column(length = 64, nullable = false)
     private String contactNumber;
 
     @NotNull
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127, nullable = false)
     private String addressLine1;
 
-    @Min(1)
-    @Max(127)
+    @Size(min = 1, max = 127)
     @Column(length = 127)
     private String addressLine2;
 
     @NotNull
-    @Min(1)
-    @Max(10)
+    @Size(min = 1, max = 10)
     @Column(length = 10, nullable = false)
     private String postalCode;
 }
