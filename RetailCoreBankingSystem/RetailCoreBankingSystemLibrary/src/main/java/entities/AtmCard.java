@@ -20,6 +20,11 @@ import java.util.List;
 public class AtmCard implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotNull
+    @OneToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+
     @OneToMany(mappedBy = "atmCard")
     private List<DepositAccount> depositAccountList = new ArrayList<>();
 
