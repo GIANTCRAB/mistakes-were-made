@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+GLASSFISH_HOME="/home/woohuiren/Programming/glassfish5/"
+
 ROOT_DIR=$(cd `dirname  $0 `  && pwd )
 ADMIN=$GLASSFISH_HOME/bin/asadmin
 EJB_ARTIFACT=$ROOT_DIR/calc-bean/target/calc-bean.war
