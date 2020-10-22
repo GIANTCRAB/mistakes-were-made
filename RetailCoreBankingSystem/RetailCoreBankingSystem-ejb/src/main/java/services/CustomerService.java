@@ -73,7 +73,7 @@ public class CustomerService {
                 + padZero(random.nextInt(10000), 4) + "-"
                 + padZero(random.nextInt(10000), 4) + "-"
                 + padZero(random.nextInt(10000), 4) + "-"
-                + padZero(random.nextInt(10000), 4) + "-";
+                + padZero(random.nextInt(10000), 4);
         depositAccount.setAccountNumber(accountNumber);
         depositAccount.setCustomer(customer);
         depositAccount.setDepositAccountType(accountType);
