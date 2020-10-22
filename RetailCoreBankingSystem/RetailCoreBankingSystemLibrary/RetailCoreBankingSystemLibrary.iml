@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="calc-library" />
+          <factory-entry name="RetailCoreBankingSystemLibrary" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
