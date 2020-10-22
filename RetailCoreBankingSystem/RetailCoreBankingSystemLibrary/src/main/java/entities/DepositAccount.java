@@ -44,18 +44,19 @@ public class DepositAccount implements Serializable {
     private DepositAccountType depositAccountType;
 
     @NotNull
-    @Column()
+    @Column
     private BigDecimal availableBalance = BigDecimal.valueOf(0);
 
     @NotNull
-    @Column()
+    @Column
     private BigDecimal holdBalance = BigDecimal.valueOf(0);
 
     @NotNull
-    @Column()
-    private BigDecimal ledgerBalance = BigDecimal.valueOf(0);
-
-    @NotNull
-    @Column()
+    @Column
     private boolean enabled = true;
+
+    @Transient
+    public BigDecimal getLedgerBalance() {
+        return getAvailableBalance().subtract(getHoldBalance());
+    }
 }
