@@ -31,7 +31,7 @@ public class DepositAccount implements Serializable {
     private List<DepositAccountTransaction> depositAccountTransactionList = new ArrayList<>();
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long depositAccountId;
 
     // Format: xxx-xxxx-xxxx-xxxx-xxxx

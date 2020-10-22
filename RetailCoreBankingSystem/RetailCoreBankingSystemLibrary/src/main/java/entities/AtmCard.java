@@ -25,7 +25,7 @@ public class AtmCard implements Serializable {
     private Customer customer;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long atmCardId;
 
     @NotNull

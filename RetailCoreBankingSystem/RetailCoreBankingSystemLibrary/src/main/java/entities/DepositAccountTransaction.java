@@ -25,7 +25,7 @@ public class DepositAccountTransaction implements Serializable {
     private DepositAccount depositAccount;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long depositAccountTransactionId;
 
     @NotNull
