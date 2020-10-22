@@ -3,8 +3,10 @@ package example;
 import controllers.AtmAuthSessionBeanRemote;
 import controllers.AtmSessionBeanRemote;
 import entities.AtmCard;
+import entities.DepositAccount;
 import exceptions.IncorrectCredentialsException;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -101,6 +103,9 @@ public class AtmClient {
                 case 1:
                     displayChangePinMenu();
                     break;
+                case 2:
+                    displayInquireBalance();
+                    break;
                 case 3:
                 default:
                     loggedIn = false;
@@ -127,6 +132,30 @@ public class AtmClient {
                 loop = false;
             } catch (InvalidConstraintException e) {
                 this.displayConstraintErrorMessage(e);
+            }
+        }
+    }
+
+    private void displayInquireBalance() throws IOException {
+        boolean loop = true;
+        while (loop) {
+            this.outputStreamWriter.write("Enter Deposit Account ID:\n");
+            this.outputStreamWriter.flush();
+            long depositAccountId = scanner.nextLong();
+
+            try {
+                DepositAccount depositAccount = this.atmSessionBeanRemote.inquireDepositAccount(this.authenticatedAtmCard, depositAccountId);
+                this.outputStreamWriter.write("Available Balance: " + depositAccount.getAvailableBalance() + " \n");
+                this.outputStreamWriter.write("Ledger Balance: " + depositAccount.getLedgerBalance() + " \n");
+                this.outputStreamWriter.write("Holding Balance: " + depositAccount.getHoldBalance() + " \n");
+                this.outputStreamWriter.flush();
+                loop = false;
+            } catch (NotAuthenticatedException e) {
+                this.displayNotAuthenticatedMessage();
+                loop = false;
+            } catch (InvalidEntityIdException e) {
+                this.outputStreamWriter.write("Invalid Deposit Account ID.\n");
+                this.outputStreamWriter.flush();
             }
         }
     }
