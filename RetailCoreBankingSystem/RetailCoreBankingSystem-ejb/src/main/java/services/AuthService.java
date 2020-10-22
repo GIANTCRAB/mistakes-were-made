@@ -31,10 +31,8 @@ public class AuthService {
         try {
             final Employee searchResult = searchQuery.getSingleResult();
 
-            if (searchResult != null) {
-                if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
-                    return searchResult;
-                }
+            if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
+                return searchResult;
             }
         } catch (NoResultException ignored) {
         }
