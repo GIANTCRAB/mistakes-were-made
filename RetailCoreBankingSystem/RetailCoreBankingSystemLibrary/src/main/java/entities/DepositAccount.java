@@ -35,7 +35,7 @@ public class DepositAccount implements Serializable {
 
     // Format: xxx-xxxx-xxxx-xxxx-xxxx
     @NotNull
-    @Size(min = 24, max = 24)
+    @Size(min = 23, max = 23)
     @Column(length = 32, nullable = false, unique = true)
     private String accountNumber;
 
