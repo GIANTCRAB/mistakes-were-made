@@ -112,6 +112,8 @@ public class TerminalClient {
                 case 3:
                     displayIssueAtmCardMenu();
                     break;
+                case 4:
+                    displayIssueReplacementAtmCardMenu();
                 case 5:
                 default:
                     loggedIn = false;
@@ -239,6 +241,30 @@ public class TerminalClient {
                 if (e instanceof InvalidConstraintException) {
                     this.displayConstraintErrorMessage((InvalidConstraintException) e);
                 }
+            }
+        }
+    }
+
+    private void displayIssueReplacementAtmCardMenu() throws IOException {
+        boolean loop = true;
+        while (loop) {
+            this.outputStreamWriter.write("Enter ATM Card ID:\n");
+            this.outputStreamWriter.flush();
+            final Long atmCardId = scanner.nextLong();
+
+            try {
+                AtmCard atmCard = this.tellerSessionBeanRemote.issueReplacementAtmCard(this.authenticatedEmployee, atmCardId);
+                this.outputStreamWriter.write("ATM card replacement created successfully: " + atmCard.getCardNumber() + "\n");
+                this.outputStreamWriter.flush();
+                loop = false;
+            } catch (NotAuthenticatedException e) {
+                this.displayNotAuthenticatedMessage();
+                loop = false;
+            } catch (InvalidEntityIdException e) {
+                this.outputStreamWriter.write("ATM card does not exists!\n");
+                this.outputStreamWriter.flush();
+            } catch (InvalidConstraintException e) {
+                this.displayConstraintErrorMessage(e);
             }
         }
     }
