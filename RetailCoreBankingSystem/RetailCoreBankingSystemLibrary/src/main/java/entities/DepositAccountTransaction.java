@@ -21,7 +21,7 @@ public class DepositAccountTransaction implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "depositAccountId")
+    @JoinColumn(name = "depositAccountId", nullable = false)
     private DepositAccount depositAccount;
 
     @Id
@@ -29,7 +29,7 @@ public class DepositAccountTransaction implements Serializable {
     private long depositAccountTransactionId;
 
     @NotNull
-    @Column
+    @Column(nullable = false)
     private LocalDateTime transactionDateTime = LocalDateTime.now();
 
     @NotNull
@@ -37,15 +37,15 @@ public class DepositAccountTransaction implements Serializable {
     private TransactionType type;
 
     @NotNull
-    @Column()
+    @Column(nullable = false)
     private String code;
 
     @NotNull
-    @Column()
+    @Column(nullable = false)
     private String reference;
 
     @NotNull
-    @Column()
+    @Column
     private BigDecimal amount;
 
     @NotNull
