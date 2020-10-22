@@ -15,10 +15,10 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AutomatedTellerMachineClient" target="1.8" />
-      <module name="RetailCoreBankingSystem" target="1.8" />
-      <module name="RetailCoreBankingSystem-ejb" target="1.8" />
-      <module name="RetailCoreBankingSystemLibrary" target="1.8" />
-      <module name="TellerTerminalClient" target="1.8" />
+      <module name="RetailCoreBankingSystem" target="1.5" />
+      <module name="RetailCoreBankingSystem-ejb" target="1.5" />
+      <module name="RetailCoreBankingSystemLibrary" target="1.5" />
+      <module name="TellerTerminalClient" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

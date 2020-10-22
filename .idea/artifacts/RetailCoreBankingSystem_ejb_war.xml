@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="RetailCoreBankingSystem-ejb:war">
+    <output-path>$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>RetailCoreBankingSystem-ejb</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="RetailCoreBankingSystem-ejb.war">
+      <element id="artifact" artifact-name="RetailCoreBankingSystem-ejb:war exploded" />
+    </root>
+  </artifact>
+</component>
