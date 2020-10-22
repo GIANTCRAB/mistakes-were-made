@@ -3,6 +3,7 @@ package services;
 import entities.AtmCard;
 import entities.Employee;
 import exceptions.IncorrectCredentialsException;
+import exceptions.NotAuthenticatedException;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -46,6 +47,18 @@ public class AuthService {
         }
 
         throw new IncorrectCredentialsException();
+    }
+
+    public AtmCard retrieveManagedAtmCard(AtmCard atmCard) throws NotAuthenticatedException {
+        final TypedQuery<AtmCard> searchQuery = this.em.createQuery("select atmCard from AtmCard atmCard where atmCard.atmCardId=?1 and atmCard.enabled = true and atmCard.pin = ?2", AtmCard.class)
+                .setParameter(1, atmCard.getAtmCardId())
+                .setParameter(2, atmCard.getPin());
+        try {
+            return searchQuery.getSingleResult();
+        } catch (NoResultException ignored) {
+        }
+
+        throw new NotAuthenticatedException();
     }
 
     public AtmCard atmAuth(String cardNumber, String cardPin) throws IncorrectCredentialsException {
