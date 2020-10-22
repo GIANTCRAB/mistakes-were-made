@@ -1,9 +1,6 @@
 package controllers;
 
-import entities.Customer;
-import entities.DepositAccount;
-import entities.DepositAccountType;
-import entities.Employee;
+import entities.*;
 import exceptions.InvalidConstraintException;
 import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
@@ -13,6 +10,9 @@ import services.CustomerService;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Stateful
 public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionBeanRemote {
@@ -63,10 +63,16 @@ public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionB
         return this.customerService.openDepositAccount(customerId, depositAccountType, initialDeposit);
     }
 
-
     @Override
-    public void issueAtmCard() {
+    public AtmCard issueAtmCard(Employee loggedInEmployee, Long customerId, String accountList, String nameOnCard, String pin) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException {
+        if (this.authService.employeeNotExists(loggedInEmployee)) {
+            throw new NotAuthenticatedException();
+        }
 
+        final List<Long> accountIds = new ArrayList<>();
+        Arrays.stream(accountList.split(",")).mapToLong(Long::getLong).forEach(accountIds::add);
+
+        return this.customerService.issueNewAtmCard(customerId, accountIds, nameOnCard, pin);
     }
 
     @Override

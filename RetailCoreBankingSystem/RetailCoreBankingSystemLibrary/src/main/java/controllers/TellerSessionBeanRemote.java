@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.AtmCard;
 import entities.Customer;
 import entities.DepositAccount;
 import entities.Employee;
@@ -26,7 +27,11 @@ public interface TellerSessionBeanRemote {
                                       String accountType,
                                       BigDecimal initialDeposit) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException;
 
-    void issueAtmCard();
+    AtmCard issueAtmCard(Employee loggedInEmployee,
+                         Long customerId,
+                         String accountList,
+                         String nameOnCard,
+                         String pin) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException;
 
     void issueReplacementAtmCard();
 }

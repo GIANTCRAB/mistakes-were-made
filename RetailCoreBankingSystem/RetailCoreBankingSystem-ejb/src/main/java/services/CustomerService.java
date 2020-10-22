@@ -1,5 +1,6 @@
 package services;
 
+import entities.AtmCard;
 import entities.Customer;
 import entities.DepositAccount;
 import entities.DepositAccountType;
@@ -17,6 +18,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -94,6 +96,49 @@ public class CustomerService {
         em.flush();
 
         return depositAccount;
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public AtmCard issueNewAtmCard(Long customerId, List<Long> accountIdList, String nameOnCard, String pin) throws InvalidEntityIdException, InvalidConstraintException {
+        final Customer customer = this.em.find(Customer.class, customerId);
+        if (customer == null) {
+            throw new InvalidEntityIdException();
+        }
+
+        List<DepositAccount> depositAccountList = new ArrayList<>();
+
+        for (Long id : accountIdList) {
+            DepositAccount depositAccount = this.em.find(DepositAccount.class, id);
+            if (depositAccount == null) {
+                throw new InvalidEntityIdException();
+            }
+
+            depositAccountList.add(depositAccount);
+        }
+
+        AtmCard atmCard = new AtmCard();
+        atmCard.setCardNumber("00000000");
+        atmCard.setCustomer(customer);
+        atmCard.setDepositAccountList(depositAccountList);
+        atmCard.setNameOnCard(nameOnCard);
+        atmCard.setPin(pin);
+        Set<ConstraintViolation<AtmCard>> violations = validator.validate(atmCard);
+        // There are invalid data
+        if (!violations.isEmpty()) {
+            throw new InvalidConstraintException(violations.toString());
+        }
+        em.persist(atmCard);
+        em.flush();
+
+        for (DepositAccount depositAccount : depositAccountList) {
+            depositAccount.setAtmCard(atmCard);
+            em.persist(depositAccount);
+        }
+        customer.setAtmCard(atmCard);
+        em.persist(customer);
+        em.flush();
+
+        return atmCard;
     }
 
     private String padZero(int value, int paddingLength) {
