@@ -23,8 +23,12 @@ public class DepositAccount implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "atmCardId")
+    private AtmCard atmCard;
 
     @OneToMany(mappedBy = "depositAccount")
     private List<DepositAccountTransaction> depositAccountTransactionList = new ArrayList<>();

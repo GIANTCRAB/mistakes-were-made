@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,10 +20,8 @@ import java.io.Serializable;
 public class AtmCard implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "customerId")
-    private Customer customer;
+    @OneToMany(mappedBy = "atmCard")
+    private List<DepositAccount> depositAccountList = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

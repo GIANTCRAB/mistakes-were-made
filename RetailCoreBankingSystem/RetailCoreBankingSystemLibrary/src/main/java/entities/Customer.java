@@ -23,9 +23,6 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customer")
     private List<DepositAccount> depositAccountList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "customer")
-    private AtmCard atmCard;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
