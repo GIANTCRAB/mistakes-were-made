@@ -34,10 +34,11 @@ public class DepositAccount implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long depositAccountId;
 
+    // Format: xxx-xxxx-xxxx-xxxx-xxxx
     @NotNull
-    @Min(3)
-    @Max(127)
-    @Column(length = 127, nullable = false, unique = true)
+    @Min(24)
+    @Max(24)
+    @Column(length = 32, nullable = false, unique = true)
     private String accountNumber;
 
     @NotNull
