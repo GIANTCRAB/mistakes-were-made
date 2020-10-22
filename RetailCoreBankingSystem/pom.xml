@@ -13,7 +13,7 @@
     <modules>
         <module>RetailCoreBankingSystemLibrary</module>
         <module>RetailCoreBankingSystem-ejb</module>
-        <module>calc-client</module>
+        <module>TellerTerminalClient</module>
     </modules>
     <build>
         <pluginManagement>

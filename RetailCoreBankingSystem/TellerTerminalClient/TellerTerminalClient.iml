@@ -9,17 +9,17 @@
           <factory-entry name="calc-client" />
         </datasource-mapping>
         <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-client/src/main/resources/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/TellerTerminalClient/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
-    <content url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-client">
-      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-client/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-client/src/main/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/calc-client/target" />
+    <content url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/TellerTerminalClient">
+      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/TellerTerminalClient/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/TellerTerminalClient/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../RetailCoreBankingSystem/TellerTerminalClient/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

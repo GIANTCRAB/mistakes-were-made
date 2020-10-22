@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/RetailCoreBankingSystem-ejb.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystem-ejb/RetailCoreBankingSystem-ejb.iml" />
       <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/RetailCoreBankingSystemLibrary.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/RetailCoreBankingSystemLibrary/RetailCoreBankingSystemLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/calc-client/calc-client.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/calc-client/calc-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetailCoreBankingSystem/TellerTerminalClient/TellerTerminalClient.iml" filepath="$PROJECT_DIR$/RetailCoreBankingSystem/TellerTerminalClient/TellerTerminalClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mistakes-were-made.iml" filepath="$PROJECT_DIR$/.idea/mistakes-were-made.iml" />
     </modules>
   </component>

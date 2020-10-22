@@ -15,6 +15,6 @@ mvn -DskipTests=true clean install
 $ADMIN undeploy $APP_NAME || echo "nothing to undeploy..."
 $ADMIN deploy $EJB_ARTIFACT
 
-cd $ROOT_DIR/calc-client/
+cd $ROOT_DIR/TellerTerminalClient/
 mvn clean verify exec:java
 
