@@ -31,8 +31,15 @@ public class AuthService {
         try {
             final Employee searchResult = searchQuery.getSingleResult();
 
-            if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
-                return searchResult;
+            // WARNING: If password isn't hashed, just allow it to compare anyways. Don't do this in real world! Always hash your passwords
+            try {
+                if (this.passwordHash.verify(password.toCharArray(), searchResult.getPassword())) {
+                    return searchResult;
+                }
+            } catch (IllegalArgumentException e) {
+                if (password.equals(searchResult.getPassword())) {
+                    return searchResult;
+                }
             }
         } catch (NoResultException ignored) {
         }
