@@ -1,7 +1,9 @@
 package controllers;
 
 import entities.AtmCard;
+import entities.DepositAccount;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 import exceptions.NotAuthenticatedException;
 import services.AtmService;
 import services.AuthService;
@@ -21,5 +23,12 @@ public class AtmSessionBean implements AtmSessionBeanLocal, AtmSessionBeanRemote
         final AtmCard managedAtmCard = this.authService.retrieveManagedAtmCard(atmCard);
 
         return this.atmService.changePin(managedAtmCard, newPin);
+    }
+
+    @Override
+    public DepositAccount inquireDepositAccount(AtmCard atmCard, long depositAccountId) throws NotAuthenticatedException, InvalidEntityIdException {
+        final AtmCard managedAtmCard = this.authService.retrieveManagedAtmCard(atmCard);
+
+        return this.atmService.inquireDepositAccount(managedAtmCard, depositAccountId);
     }
 }

@@ -1,12 +1,16 @@
 package services;
 
 import entities.AtmCard;
+import entities.DepositAccount;
 import exceptions.InvalidConstraintException;
+import exceptions.InvalidEntityIdException;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -33,5 +37,18 @@ public class AtmService {
         em.flush();
 
         return atmCard;
+    }
+
+    public DepositAccount inquireDepositAccount(AtmCard atmCard, long depositAccountId) throws InvalidEntityIdException {
+        final TypedQuery<DepositAccount> searchQuery = this.em.createQuery("select da from DepositAccount da where da.depositAccountId =?1 and da.atmCard=?2", DepositAccount.class)
+                .setParameter(1, depositAccountId)
+                .setParameter(2, atmCard);
+
+        try {
+            return searchQuery.getSingleResult();
+        } catch (NoResultException ignored) {
+        }
+
+        throw new InvalidEntityIdException();
     }
 }
