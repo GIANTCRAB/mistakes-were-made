@@ -81,12 +81,12 @@ public class CustomerService {
             throw new InvalidConstraintException(violations.toString());
         }
         em.persist(depositAccount);
+        em.flush();
 
         List<DepositAccount> depositAccountList = customer.getDepositAccountList();
         depositAccountList.add(depositAccount);
         customer.setDepositAccountList(depositAccountList);
         em.persist(customer);
-
         em.flush();
 
         return depositAccount;
