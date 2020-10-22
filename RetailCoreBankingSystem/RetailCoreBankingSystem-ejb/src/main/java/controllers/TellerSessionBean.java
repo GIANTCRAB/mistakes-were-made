@@ -76,7 +76,11 @@ public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionB
     }
 
     @Override
-    public void issueReplacementAtmCard() {
+    public AtmCard issueReplacementAtmCard(Employee loggedInEmployee, Long atmCardId) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException {
+        if (this.authService.employeeNotExists(loggedInEmployee)) {
+            throw new NotAuthenticatedException();
+        }
 
+        return this.customerService.issueReplacementAtmCard(atmCardId);
     }
 }

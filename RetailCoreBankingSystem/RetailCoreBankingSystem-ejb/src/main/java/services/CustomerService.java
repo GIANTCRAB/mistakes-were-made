@@ -6,6 +6,7 @@ import entities.DepositAccount;
 import entities.DepositAccountType;
 import exceptions.InvalidConstraintException;
 import exceptions.InvalidEntityIdException;
+import lombok.NonNull;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -116,6 +117,11 @@ public class CustomerService {
             depositAccountList.add(depositAccount);
         }
 
+        return this.issueNewAtmCard(customer, depositAccountList, nameOnCard, pin);
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    private AtmCard issueNewAtmCard(@NonNull Customer customer, @NonNull List<DepositAccount> depositAccountList, String nameOnCard, String pin) throws InvalidConstraintException {
         AtmCard atmCard = new AtmCard();
         final Random random = new Random();
         atmCard.setCardNumber(padZero(random.nextInt(100000), 5)
@@ -142,6 +148,31 @@ public class CustomerService {
         em.flush();
 
         return atmCard;
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public AtmCard issueReplacementAtmCard(Long atmCardId) throws InvalidEntityIdException, InvalidConstraintException {
+        final AtmCard atmCard = this.em.find(AtmCard.class, atmCardId);
+        if (atmCard == null) {
+            throw new InvalidEntityIdException();
+        }
+
+        // Remove all relationships
+        final Customer customer = atmCard.getCustomer();
+        customer.setAtmCard(null);
+        em.persist(customer);
+        final List<DepositAccount> depositAccountList = atmCard.getDepositAccountList();
+        for (DepositAccount depositAccount : depositAccountList) {
+            depositAccount.setAtmCard(null);
+            em.persist(depositAccount);
+        }
+
+        final String oldNameOnCard = atmCard.getNameOnCard();
+        final String oldPin = atmCard.getPin();
+
+        em.remove(atmCard);
+
+        return this.issueNewAtmCard(customer, depositAccountList, oldNameOnCard, oldPin);
     }
 
     private String padZero(int value, int paddingLength) {

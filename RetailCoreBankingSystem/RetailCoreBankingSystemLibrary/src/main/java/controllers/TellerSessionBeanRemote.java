@@ -33,5 +33,5 @@ public interface TellerSessionBeanRemote {
                          String nameOnCard,
                          String pin) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException;
 
-    void issueReplacementAtmCard();
+    AtmCard issueReplacementAtmCard(Employee loggedInEmployee, Long atmCardId) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException;
 }
