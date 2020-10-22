@@ -32,7 +32,7 @@ public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionB
                                    String addressLine2,
                                    String postalCode) throws NotAuthenticatedException, InvalidConstraintException {
         // Make sure employee is logged in
-        if (!this.authService.checkEmployeeExists(loggedInEmployee)) {
+        if (this.authService.employeeNotExists(loggedInEmployee)) {
             throw new NotAuthenticatedException();
         }
 
@@ -44,7 +44,7 @@ public class TellerSessionBean implements TellerSessionBeanLocal, TellerSessionB
                                              Long customerId,
                                              String accountType,
                                              BigDecimal initialDeposit) throws NotAuthenticatedException, InvalidEntityIdException, InvalidConstraintException {
-        if (!this.authService.checkEmployeeExists(loggedInEmployee)) {
+        if (this.authService.employeeNotExists(loggedInEmployee)) {
             throw new NotAuthenticatedException();
         }
 

@@ -76,7 +76,7 @@ public class TerminalClient {
             try {
                 this.authenticatedEmployee = this.tellerAuthSessionBeanRemote.login(username, password);
 
-                this.outputStreamWriter.write("Authenticated as " + authenticatedEmployee.getFirstName() + ".\n");
+                this.outputStreamWriter.write("Authenticated as " + authenticatedEmployee.getFirstName() + " (" + authenticatedEmployee.getEmployeeId() + ")" + ".\n");
                 loginLoop = false;
             } catch (IncorrectCredentialsException e) {
                 this.outputStreamWriter.write("Incorrect credentials! Try again!\n");

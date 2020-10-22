@@ -20,8 +20,8 @@ public class AuthService {
     @Inject
     private Pbkdf2PasswordHash passwordHash;
 
-    public boolean checkEmployeeExists(Employee employee) {
-        return this.em.find(Employee.class, employee.getEmployeeId()) != null;
+    public boolean employeeNotExists(Employee employee) {
+        return this.em.find(Employee.class, employee.getEmployeeId()) == null;
     }
 
     public Employee login(String username, String password) throws IncorrectCredentialsException {
