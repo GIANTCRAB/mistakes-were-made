@@ -117,7 +117,10 @@ public class CustomerService {
         }
 
         AtmCard atmCard = new AtmCard();
-        atmCard.setCardNumber("00000000");
+        final Random random = new Random();
+        atmCard.setCardNumber(padZero(random.nextInt(100000), 5)
+                + padZero(random.nextInt(100000), 5)
+                + padZero(random.nextInt(100000), 5));
         atmCard.setCustomer(customer);
         atmCard.setDepositAccountList(depositAccountList);
         atmCard.setNameOnCard(nameOnCard);
