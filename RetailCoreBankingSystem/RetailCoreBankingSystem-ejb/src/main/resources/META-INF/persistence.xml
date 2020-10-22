@@ -8,6 +8,8 @@
         <class>entities.Customer</class>
         <class>entities.Employee</class>
         <class>entities.DepositAccount</class>
+        <class>entities.DepositAccountTransaction</class>
+        <class>entities.AtmCard</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
